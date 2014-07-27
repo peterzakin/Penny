@@ -13,5 +13,6 @@
 
 @dynamic budgetAmount;
 @dynamic spentAmount;
+@dynamic date;
 
 @end

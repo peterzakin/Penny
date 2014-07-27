@@ -14,5 +14,6 @@
 
 @property (nonatomic, retain) NSNumber * budgetAmount;
 @property (nonatomic, retain) NSNumber * spentAmount;
+@property (nonatomic, retain) NSDate * date;
 
 @end

@@ -13,7 +13,6 @@
 
 + (NSManagedObject *)insertObjectOfType:(NSString *)entityName intoManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
     return [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:managedObjectContext];
-    
 }
 
 + (NSArray *)executeFetchRequest:(NSFetchRequest *)fetchRequest intoManagedObjectContext:(NSManagedObjectContext *)moc {

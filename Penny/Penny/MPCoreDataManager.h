@@ -10,4 +10,8 @@
 
 @interface MPCoreDataManager : NSObject
 
++ (NSArray *)executeFetchRequest:(NSFetchRequest *)fetchRequest intoManagedObjectContext:(NSManagedObjectContext *)moc;
+
++ (NSManagedObject *)insertObjectOfType:(NSString *)entityName intoManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+
 @end

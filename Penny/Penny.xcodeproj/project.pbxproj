@@ -12,8 +12,11 @@
 		1B3274BD1984702800D6B1F3 /* MPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3274BB1984702800D6B1F3 /* MPClient.m */; };
 		1B3274BF198470A200D6B1F3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B3274BE198470A200D6B1F3 /* CoreData.framework */; };
 		1B3274C2198471D800D6B1F3 /* Penny.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B3274C0198471D800D6B1F3 /* Penny.xcdatamodeld */; };
-		1B3274C51984737000D6B1F3 /* MPDayRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3274C41984737000D6B1F3 /* MPDayRecord.m */; };
 		1B3274C9198473C000D6B1F3 /* MPCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3274C8198473C000D6B1F3 /* MPCoreDataManager.m */; };
+		1B3274CC19847E5300D6B1F3 /* MPDayRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3274CB19847E5300D6B1F3 /* MPDayRecord.m */; };
+		1B3274CF19847E9300D6B1F3 /* MPDayRecord+MP.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3274CE19847E9300D6B1F3 /* MPDayRecord+MP.m */; };
+		1B3274D21984812C00D6B1F3 /* NSDate+MP.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3274D11984812C00D6B1F3 /* NSDate+MP.m */; };
+		1B3274D81984842E00D6B1F3 /* NSManagedObjectContext+MP.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3274D61984842E00D6B1F3 /* NSManagedObjectContext+MP.m */; };
 		1B830CCD1984651300D9C846 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B830CCC1984651300D9C846 /* Foundation.framework */; };
 		1B830CCF1984651300D9C846 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B830CCE1984651300D9C846 /* CoreGraphics.framework */; };
 		1B830CD11984651300D9C846 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B830CD01984651300D9C846 /* UIKit.framework */; };
@@ -45,10 +48,16 @@
 		1B3274BC1984702800D6B1F3 /* MPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPClient.h; sourceTree = "<group>"; };
 		1B3274BE198470A200D6B1F3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1B3274C1198471D800D6B1F3 /* Penny.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Penny.xcdatamodel; sourceTree = "<group>"; };
-		1B3274C31984737000D6B1F3 /* MPDayRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPDayRecord.h; path = model/MPDayRecord.h; sourceTree = "<group>"; };
-		1B3274C41984737000D6B1F3 /* MPDayRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPDayRecord.m; path = model/MPDayRecord.m; sourceTree = "<group>"; };
 		1B3274C7198473C000D6B1F3 /* MPCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCoreDataManager.h; sourceTree = "<group>"; };
 		1B3274C8198473C000D6B1F3 /* MPCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCoreDataManager.m; sourceTree = "<group>"; };
+		1B3274CA19847E5300D6B1F3 /* MPDayRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPDayRecord.h; path = model/MPDayRecord.h; sourceTree = "<group>"; };
+		1B3274CB19847E5300D6B1F3 /* MPDayRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPDayRecord.m; path = model/MPDayRecord.m; sourceTree = "<group>"; };
+		1B3274CD19847E9300D6B1F3 /* MPDayRecord+MP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MPDayRecord+MP.h"; path = "model/MPDayRecord+MP.h"; sourceTree = "<group>"; };
+		1B3274CE19847E9300D6B1F3 /* MPDayRecord+MP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MPDayRecord+MP.m"; path = "model/MPDayRecord+MP.m"; sourceTree = "<group>"; };
+		1B3274D01984812C00D6B1F3 /* NSDate+MP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MP.h"; sourceTree = "<group>"; };
+		1B3274D11984812C00D6B1F3 /* NSDate+MP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MP.m"; sourceTree = "<group>"; };
+		1B3274D61984842E00D6B1F3 /* NSManagedObjectContext+MP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+MP.m"; sourceTree = "<group>"; };
+		1B3274D71984842E00D6B1F3 /* NSManagedObjectContext+MP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+MP.h"; sourceTree = "<group>"; };
 		1B830CC91984651300D9C846 /* Penny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B830CCC1984651300D9C846 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1B830CCE1984651300D9C846 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,8 +116,10 @@
 		1B3274C61984737500D6B1F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1B3274C31984737000D6B1F3 /* MPDayRecord.h */,
-				1B3274C41984737000D6B1F3 /* MPDayRecord.m */,
+				1B3274CA19847E5300D6B1F3 /* MPDayRecord.h */,
+				1B3274CB19847E5300D6B1F3 /* MPDayRecord.m */,
+				1B3274CD19847E9300D6B1F3 /* MPDayRecord+MP.h */,
+				1B3274CE19847E9300D6B1F3 /* MPDayRecord+MP.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -156,9 +167,13 @@
 				1B3274C7198473C000D6B1F3 /* MPCoreDataManager.h */,
 				1B3274C8198473C000D6B1F3 /* MPCoreDataManager.m */,
 				1B3274BC1984702800D6B1F3 /* MPClient.h */,
+				1B3274D61984842E00D6B1F3 /* NSManagedObjectContext+MP.m */,
+				1B3274D71984842E00D6B1F3 /* NSManagedObjectContext+MP.h */,
 				1B830CDE1984651400D9C846 /* Images.xcassets */,
 				1B830CD31984651300D9C846 /* Supporting Files */,
 				1B3274C0198471D800D6B1F3 /* Penny.xcdatamodeld */,
+				1B3274D01984812C00D6B1F3 /* NSDate+MP.h */,
+				1B3274D11984812C00D6B1F3 /* NSDate+MP.m */,
 				1B3274C61984737500D6B1F3 /* Model */,
 			);
 			path = Penny;
@@ -324,12 +339,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B3274C51984737000D6B1F3 /* MPDayRecord.m in Sources */,
+				1B3274D81984842E00D6B1F3 /* NSManagedObjectContext+MP.m in Sources */,
 				1B3274BD1984702800D6B1F3 /* MPClient.m in Sources */,
 				1B3274C2198471D800D6B1F3 /* Penny.xcdatamodeld in Sources */,
+				1B3274CC19847E5300D6B1F3 /* MPDayRecord.m in Sources */,
 				1B3274C9198473C000D6B1F3 /* MPCoreDataManager.m in Sources */,
 				1B830CD91984651300D9C846 /* main.m in Sources */,
+				1B3274CF19847E9300D6B1F3 /* MPDayRecord+MP.m in Sources */,
 				1B830CDD1984651400D9C846 /* MPAppDelegate.m in Sources */,
+				1B3274D21984812C00D6B1F3 /* NSDate+MP.m in Sources */,
 				1B3274B31984674A00D6B1F3 /* MPNavigationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
