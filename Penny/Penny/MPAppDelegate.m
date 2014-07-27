@@ -8,6 +8,7 @@
 
 #import "MPAppDelegate.h"
 #import "MPClient.h"
+#import "MPDayViewController.h"
 
 @implementation MPAppDelegate
 
@@ -17,6 +18,10 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    MPDayViewController *dayVC = [[MPDayViewController alloc] init];
+    self.window.rootViewController = dayVC;
+    
     return YES;
 }
 

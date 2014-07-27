@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MPDayToggling <NSObject>
+
+- (void)moveToPreviousDay;
+- (void)moveToNextDay;
+
+@end
+
 @interface MPNavigationView : UIView
+
+- (instancetype)initWithDelegate:(UIViewController<MPDayToggling> *)delegate;
 
 - (void)updateDisplayForDate:(NSDate *)date budgetAmount:(CGFloat)budgetAmount;
 
 @end
 
-@protocol MPDayToggling <NSObject>
-
-- (void)moveToPreviousDay;
-- (void)moveToFollowingDay;
-
-@end

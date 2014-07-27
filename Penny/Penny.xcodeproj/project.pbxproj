@@ -29,6 +29,9 @@
 		1B830CE81984651400D9C846 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B830CD01984651300D9C846 /* UIKit.framework */; };
 		1B830CF01984651400D9C846 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B830CEE1984651400D9C846 /* InfoPlist.strings */; };
 		1B830CF21984651400D9C846 /* PennyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B830CF11984651400D9C846 /* PennyTests.m */; };
+		B1454F1A198489FE000056EA /* MPFrameSequenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1454F19198489FE000056EA /* MPFrameSequenceView.m */; };
+		B1454F2019848D2E000056EA /* MPDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1454F1F19848D2E000056EA /* MPDayViewController.m */; };
+		B1454F2319848F63000056EA /* MPDailyBudgetView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1454F2219848F63000056EA /* MPDailyBudgetView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,12 @@
 		1B830CED1984651400D9C846 /* PennyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PennyTests-Info.plist"; sourceTree = "<group>"; };
 		1B830CEF1984651400D9C846 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1B830CF11984651400D9C846 /* PennyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PennyTests.m; sourceTree = "<group>"; };
+		B1454F18198489FE000056EA /* MPFrameSequenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFrameSequenceView.h; sourceTree = "<group>"; };
+		B1454F19198489FE000056EA /* MPFrameSequenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFrameSequenceView.m; sourceTree = "<group>"; };
+		B1454F1E19848D2E000056EA /* MPDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDayViewController.h; sourceTree = "<group>"; };
+		B1454F1F19848D2E000056EA /* MPDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDayViewController.m; sourceTree = "<group>"; };
+		B1454F2119848F63000056EA /* MPDailyBudgetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPDailyBudgetView.h; sourceTree = "<group>"; };
+		B1454F2219848F63000056EA /* MPDailyBudgetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPDailyBudgetView.m; sourceTree = "<group>"; };
 		F13447C4175A4EC79CAB29E0 /* Pods-Penny.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Penny.xcconfig"; path = "Pods/Pods-Penny.xcconfig"; sourceTree = "<group>"; };
 		F7EFEFA6D7424C60B7935E57 /* libPods-Penny.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Penny.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -107,8 +116,12 @@
 		1B3274B41984674E00D6B1F3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B1454F18198489FE000056EA /* MPFrameSequenceView.h */,
+				B1454F19198489FE000056EA /* MPFrameSequenceView.m */,
 				1B3274B11984674A00D6B1F3 /* MPNavigationView.h */,
 				1B3274B21984674A00D6B1F3 /* MPNavigationView.m */,
+				B1454F2119848F63000056EA /* MPDailyBudgetView.h */,
+				B1454F2219848F63000056EA /* MPDailyBudgetView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 		1B830CD21984651300D9C846 /* Penny */ = {
 			isa = PBXGroup;
 			children = (
+				B1454F1D19848CFE000056EA /* Controllers */,
 				1B830CDB1984651400D9C846 /* MPAppDelegate.h */,
 				1B3274B41984674E00D6B1F3 /* Views */,
 				1B830CDC1984651400D9C846 /* MPAppDelegate.m */,
@@ -206,6 +220,15 @@
 				1B830CEE1984651400D9C846 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B1454F1D19848CFE000056EA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B1454F1E19848D2E000056EA /* MPDayViewController.h */,
+				B1454F1F19848D2E000056EA /* MPDayViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,10 +364,13 @@
 			files = (
 				1B3274D81984842E00D6B1F3 /* NSManagedObjectContext+MP.m in Sources */,
 				1B3274BD1984702800D6B1F3 /* MPClient.m in Sources */,
+				B1454F2019848D2E000056EA /* MPDayViewController.m in Sources */,
 				1B3274C2198471D800D6B1F3 /* Penny.xcdatamodeld in Sources */,
 				1B3274CC19847E5300D6B1F3 /* MPDayRecord.m in Sources */,
+				B1454F2319848F63000056EA /* MPDailyBudgetView.m in Sources */,
 				1B3274C9198473C000D6B1F3 /* MPCoreDataManager.m in Sources */,
 				1B830CD91984651300D9C846 /* main.m in Sources */,
+				B1454F1A198489FE000056EA /* MPFrameSequenceView.m in Sources */,
 				1B3274CF19847E9300D6B1F3 /* MPDayRecord+MP.m in Sources */,
 				1B830CDD1984651400D9C846 /* MPAppDelegate.m in Sources */,
 				1B3274D21984812C00D6B1F3 /* NSDate+MP.m in Sources */,
