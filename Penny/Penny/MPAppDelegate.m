@@ -7,6 +7,7 @@
 //
 
 #import "MPAppDelegate.h"
+#import "MPClient.h"
 
 @implementation MPAppDelegate
 
@@ -43,7 +44,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    // Saves changes in the application's managed object context before the application terminates.
+    [[MPClient sharedClient] saveContext];
 }
 
 @end
