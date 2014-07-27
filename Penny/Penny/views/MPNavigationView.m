@@ -9,6 +9,7 @@
 #import "MPNavigationView.h"
 #import <FrameAccessor/FrameAccessor.h>
 #import <DateTools/DateTools.h>
+#import "MPDayRecord+MP.h"
 
 @interface MPNavigationView()
 @property (nonatomic, strong) NSDate *date;
@@ -17,7 +18,7 @@
 @property (nonatomic, strong) UILabel *budgetLabel;
 @property (nonatomic, assign) CGFloat budgetAmount;
 
-@property (nonatomic, weak) UIViewController *delegate;
+@property (nonatomic, weak) UIViewController<MPDayToggling> *delegate;
 
 @end
 
@@ -35,36 +36,39 @@ CGFloat DEFAULT_BUDGET_AMOUNT = 20;
     if (self && delegate) {
         self.delegate = delegate;
         self.width = delegate.view.width;
-        self.height = 50;
         self.dateFormatter = [NSDateFormatter new];
         self.dateFormatter.dateFormat = @"MMM d";
-
         self.budgetAmount = DEFAULT_BUDGET_AMOUNT;
-        [self updateDisplayForDate:[NSDate date] budgetAmount:self.budgetAmount];
         
-#warning add buttons for left and right with associated delegate methods
+        //display
+        [self updateDisplayForDate:[NSDate date] budgetAmount:self.budgetAmount];
     }
     return self;
+}
+
+- (void)updateDisplayForRecord:(MPDayRecord *)dayRecord {
+    CGFloat budgetAmount = [dayRecord.budgetAmount floatValue];
+    [self updateDisplayForDate:dayRecord.date budgetAmount:budgetAmount];
 }
 
 
 //should be called anytime view appears
 - (void)updateDisplayForDate:(NSDate *)date budgetAmount:(CGFloat)budgetAmount {
-    self.backgroundColor = [UIColor blackColor];
-    self.alpha = .2;
+    UIColor *color = [[UIColor greenColor] colorWithAlphaComponent:.6];
+    self.backgroundColor = color;
     self.date = date;
     [self displayDateLabel];
     [self displayBudgetLabel];
+    self.height = self.dateLabel.height + self.budgetLabel.height + 20;
+    //needs to be done after the superviews height is set up
+    [self addToggleButtons];
 }
 
 - (void)displayDateLabel {
     self.dateLabel = [UILabel new];
-    self.dateLabel.font = [UIFont fontWithName:@"helvetica" size:14];
+    self.dateLabel.font = [UIFont fontWithName:@"helvetica" size:18];
     self.dateLabel.textColor = [UIColor blackColor];
-    self.dateLabel.textAlignment = NSTextAlignmentCenter;
-    self.dateLabel.width = self.width;
-    self.dateLabel.centerX = self.centerX;
-    self.dateLabel.y = TOP_PADDING_CONTENT;
+    self.dateLabel.numberOfLines = 0;
     
     if ([self.date isToday]) {
         self.dateLabel.text = @"Today";
@@ -75,7 +79,10 @@ CGFloat DEFAULT_BUDGET_AMOUNT = 20;
     } else {
         self.dateLabel.text = [self.dateFormatter stringFromDate:self.date];
     }
-    
+    [self.dateLabel sizeToFit];
+    self.dateLabel.centerX = self.centerX;
+    self.dateLabel.y = TOP_PADDING_CONTENT;
+
     [self addSubview:self.dateLabel];
 }
 
@@ -84,11 +91,49 @@ CGFloat DEFAULT_BUDGET_AMOUNT = 20;
     self.budgetLabel.font = [UIFont fontWithName:@"helvetica" size:12];
     self.budgetLabel.textColor = [UIColor blackColor];
     self.budgetLabel.textAlignment = NSTextAlignmentCenter;
-    self.budgetLabel.width = self.width;
-    self.budgetLabel.centerX = self.centerX;
-    self.budgetLabel.y = self.dateLabel.y + 5;
+
+    self.budgetLabel.y = self.dateLabel.y + self.dateLabel.height + 5;
     
-    self.budgetLabel.text = [NSString stringWithFormat:@"$%f", self.budgetAmount];
+    self.budgetLabel.text = [NSString stringWithFormat:@"Budget: $%f", self.budgetAmount];
+    [self.budgetLabel sizeToFit];
+    self.budgetLabel.centerX = self.centerX;
+    
+    [self addSubview:self.budgetLabel];
+}
+
+- (void)addToggleButtons {
+    if ([self.delegate canMoveToNextDay]) {
+        UIImage *forwardImage = [UIImage imageNamed:@"forward-icon"];
+        UIButton *forwardButton = [UIButton new];
+        [forwardButton setImage:forwardImage forState:UIControlStateNormal];
+        [forwardButton addTarget:self action:@selector(moveToNextDay) forControlEvents:UIControlEventTouchUpInside];
+        forwardButton.width = 40;
+        forwardButton.height = 30;
+        forwardButton.x = self.width - forwardButton.width - 10;
+        forwardButton.centerY = self.centerY;
+        [self addSubview:forwardButton];
+    }
+
+    if ([self.delegate canMoveToPreviousDay]) {
+        UIImage *backImage = [UIImage imageNamed:@"back-icon"];
+        UIButton *backButton = [UIButton new];
+        [backButton setImage:backImage forState:UIControlStateNormal];
+        [backButton addTarget:self action:@selector(moveToPreviousDay) forControlEvents:UIControlEventTouchUpInside];
+        backButton.width = 40;
+        backButton.height = 30;
+        backButton.x = 10;
+        backButton.centerY = self.centerY;
+        [self addSubview:backButton];
+    }
+
+}
+
+- (void)moveToPreviousDay {
+    [self.delegate moveToPreviousDay];
+}
+
+- (void)moveToNextDay {
+    [self.delegate moveToNextDay];
 }
 
 @end

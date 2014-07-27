@@ -12,6 +12,8 @@
 
 - (void)moveToPreviousDay;
 - (void)moveToNextDay;
+- (BOOL)canMoveToPreviousDay;
+- (BOOL)canMoveToNextDay;
 
 @end
 

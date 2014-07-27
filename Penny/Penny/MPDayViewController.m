@@ -9,24 +9,27 @@
 #import "MPDayViewController.h"
 #import "MPNavigationView.h"
 #import "MPFrameSequenceView.h"
+#import "MPDayRecord+MP.h"
 #import <FrameAccessor/FrameAccessor.h>
 
 
 @interface MPDayViewController ()
 
-@property(nonatomic, strong) MPNavigationView *navigationView;
-@property(nonatomic, strong) MPFrameSequenceView *frameSequenceView;
+@property (nonatomic, strong) MPNavigationView *navigationView;
+@property (nonatomic, strong) MPFrameSequenceView *frameSequenceView;
+@property (nonatomic, strong) NSArray *dayRecords;
+@property (nonatomic, strong) MPDayRecord *currentDay;
 
 @end
 
 
 @implementation MPDayViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (instancetype)init {
+    self = [super init];
     if (self) {
-        // Custom initialization
+        self.dayRecords = [MPDayRecord loadAllRecords];
+        self.currentDay = [self.dayRecords firstObject];
     }
     return self;
 }
@@ -46,15 +49,48 @@
 
 
 # pragma mark - MPDayToggling protocol
+- (BOOL)canMoveToNextDay {
+    //assume that the records are ordered correctly
+    //NO if it is not found or if it is the 0th element
+    NSInteger currentIndex = [self.dayRecords indexOfObject:self.currentDay];
+    if (currentIndex != NSNotFound && currentIndex > 0) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)canMoveToPreviousDay {
+    NSInteger index = [self.dayRecords indexOfObject:self.currentDay];
+    if (index == NSNotFound) {
+        return NO;
+    }
+    
+    if ((index + 1) < [self.dayRecords count]) {
+        return YES;
+    }
+    
+    return NO;
+}
 
 - (void)moveToPreviousDay
 {
     // TODO
+    if ([self canMoveToPreviousDay]) {
+        //adjust currentDay
+        NSInteger currentIndex = [self.dayRecords indexOfObject:self.currentDay];
+        self.currentDay = [self.dayRecords objectAtIndex:currentIndex+1];
+        //reload views based on new model object
+    }
 }
 
 - (void)moveToNextDay
 {
-    // TODO
+    if ([self canMoveToNextDay]) {
+        //adjust currentDay
+        NSInteger currentIndex = [self.dayRecords indexOfObject:self.currentDay];
+        self.currentDay = [self.dayRecords objectAtIndex:currentIndex-1];
+        //reload views based on new model object
+    }
 }
 
 
@@ -93,6 +129,11 @@
 {
     // TODO
     return;
+}
+
+#pragma mark -
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 

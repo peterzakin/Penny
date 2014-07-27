@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MPNavigationView.h"
+#import "MPFrameSequenceView.h"
 
 @class MPFrameSequenceView;
-@protocol MPDayToggling, MPFrameSequenceViewDelegate;
 
 @interface MPDayViewController : UIViewController <MPDayToggling, MPFrameSequenceViewDelegate>
 
