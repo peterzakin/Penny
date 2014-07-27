@@ -8,6 +8,7 @@
 
 #import "MPDayViewController.h"
 #import "MPNavigationView.h"
+#import "MPDailyBudgetView.h"
 #import "MPFrameSequenceView.h"
 #import <FrameAccessor/FrameAccessor.h>
 
@@ -34,6 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor blackColor];
 
     self.navigationView = [[MPNavigationView alloc] initWithDelegate:self];
     [self.view addSubview:self.navigationView];
@@ -42,6 +45,12 @@
                                           self.view.width, self.view.height - self.navigationView.height);
     
     self.frameSequenceView = [[MPFrameSequenceView alloc] initWithFrame:frameSequenceRect framesDelegate:self];
+    self.frameSequenceView.backgroundColor = [UIColor blackColor];
+    
+    [self.view addSubview:self.frameSequenceView];
+//    MPDailyBudgetView *dailyBudgetView
+//    = [[MPDailyBudgetView alloc] initWithFrame:self.frameSequenceView.frame budget:100];
+//    [self.view addSubview:dailyBudgetView];
 }
 
 
@@ -85,7 +94,12 @@
 - (UIView *)viewFrameForIndex:(NSUInteger)index
 {
     // TODO
-    return nil;
+    CGSize size = self.frameSequenceView.size;
+    MPDailyBudgetView *dailyBudgetView
+        = [[MPDailyBudgetView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height) budget:100];
+    
+    return dailyBudgetView;
+
 }
 
 // prepare the frame with content for a given index

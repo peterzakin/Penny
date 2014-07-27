@@ -49,7 +49,7 @@ static const CGFloat DEFAULT_CONTENT_WIDTH = 1600;
         [self addSubview:self.viewFrameContainerView];
         
         self.viewFrameContainerView.backgroundColor = [UIColor blackColor];
-        self.viewFrameContainerView.userInteractionEnabled = NO;
+        self.viewFrameContainerView.userInteractionEnabled = YES;
         
         self.rightMostSequenceIndex = 0;
         self.leftMostSequenceIndex = 0;

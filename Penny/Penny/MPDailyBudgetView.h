@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MPDailyBudgetView : UIView
+@interface MPDailyBudgetView : UIView <UIGestureRecognizerDelegate>
+
+- (id)initWithFrame:(CGRect)frame budget:(CGFloat)budget;
 
 @end
