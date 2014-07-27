@@ -17,8 +17,8 @@
 
 @property (nonatomic, strong) MPNavigationView *navigationView;
 @property (nonatomic, strong) MPFrameSequenceView *frameSequenceView;
-@property (nonatomic, strong) NSArray *dayRecords;
-@property (nonatomic, strong) MPDayRecord *currentDay;
+@property (nonatomic, strong) NSMutableArray *dayRecords;
+@property (nonatomic, strong) MPDayRecord *currentDayRecord;
 
 @end
 
@@ -28,10 +28,19 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.dayRecords = [MPDayRecord loadAllRecords];
-        self.currentDay = [self.dayRecords firstObject];
     }
     return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.dayRecords = [NSMutableArray arrayWithArray:[MPDayRecord loadAllRecords]];
+    self.currentDayRecord = [self.dayRecords firstObject];
+    if (!self.currentDayRecord) {
+        //create currentday
+        self.currentDayRecord = [MPDayRecord updateOrInsertRecordWithDate:[NSDate date] budgetAmount:[NSNumber numberWithFloat:20.00] spentAmount:0];
+        [self.dayRecords addObject:self.currentDayRecord];
+    }
 }
 
 - (void)viewDidLoad
@@ -52,7 +61,7 @@
 - (BOOL)canMoveToNextDay {
     //assume that the records are ordered correctly
     //NO if it is not found or if it is the 0th element
-    NSInteger currentIndex = [self.dayRecords indexOfObject:self.currentDay];
+    NSInteger currentIndex = [self.dayRecords indexOfObject:self.currentDayRecord];
     if (currentIndex != NSNotFound && currentIndex > 0) {
         return YES;
     }
@@ -60,7 +69,7 @@
 }
 
 - (BOOL)canMoveToPreviousDay {
-    NSInteger index = [self.dayRecords indexOfObject:self.currentDay];
+    NSInteger index = [self.dayRecords indexOfObject:self.currentDayRecord];
     if (index == NSNotFound) {
         return NO;
     }
@@ -77,8 +86,8 @@
     // TODO
     if ([self canMoveToPreviousDay]) {
         //adjust currentDay
-        NSInteger currentIndex = [self.dayRecords indexOfObject:self.currentDay];
-        self.currentDay = [self.dayRecords objectAtIndex:currentIndex+1];
+        NSInteger currentIndex = [self.dayRecords indexOfObject:self.currentDayRecord];
+        self.currentDayRecord = [self.dayRecords objectAtIndex:currentIndex+1];
         //reload views based on new model object
     }
 }
@@ -87,8 +96,8 @@
 {
     if ([self canMoveToNextDay]) {
         //adjust currentDay
-        NSInteger currentIndex = [self.dayRecords indexOfObject:self.currentDay];
-        self.currentDay = [self.dayRecords objectAtIndex:currentIndex-1];
+        NSInteger currentIndex = [self.dayRecords indexOfObject:self.currentDayRecord];
+        self.currentDayRecord = [self.dayRecords objectAtIndex:currentIndex-1];
         //reload views based on new model object
     }
 }

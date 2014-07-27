@@ -36,7 +36,7 @@
     //save
     [threadMOC performBlockAndWait:^{
         //update with new values
-        dayRecord.date = date;
+        dayRecord.date = [date beginningOfDay];
         dayRecord.budgetAmount = budgetAmount;
         dayRecord.spentAmount = spentAmount;
         
