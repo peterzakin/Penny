@@ -94,7 +94,7 @@ CGFloat DEFAULT_BUDGET_AMOUNT = 20;
 
     self.budgetLabel.y = self.dateLabel.y + self.dateLabel.height + 5;
     
-    self.budgetLabel.text = [NSString stringWithFormat:@"Budget: $%f", self.budgetAmount];
+    self.budgetLabel.text = [NSString stringWithFormat:@"Budget: $%.02f", self.budgetAmount];
     [self.budgetLabel sizeToFit];
     self.budgetLabel.centerX = self.centerX;
     
